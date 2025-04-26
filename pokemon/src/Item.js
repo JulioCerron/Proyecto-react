@@ -31,13 +31,13 @@ class Item extends React.Component {
 
     this.setState({
       rating:parseInt(e.target.value),
-      stars:Array(parseInt(e.target.value)).fill(1)
+      stars:Array(parseInt(e.target.value)).fill(0)
     });
     this.props.onupdaterating({id: this.state.id, title:this.state.title, image:this.state.image, rating:rating})
   }
 
   onremove = e => {
-    this.props.onremove(this.state.id);
+    this.props.onremove(this.props.id);
   }
 
     render (){

@@ -61,17 +61,21 @@ class App extends React.Component {
 
     }
   }
-  onUpdateRating = (item) => {
-    let temp = [...this.state.book];
-    const index = temp.findIndex((x) => x.id === item.id);
-
-    temp[index].title = item.title;
-    temp[index].image = item.image;
-    temp[index].rating = item.rating;
-
-    this.setState({ book: [...temp] });
-    this.initBook();
-  };
+  onUpdateRating = (updatedItem) => {
+    const temp = [...this.state.book];
+    const index = temp.findIndex(item => item.id === updatedItem.id);
+  
+    if (index !== -1) {   // Solo actualizo si encontré el libro
+      temp[index].title = updatedItem.title;
+      temp[index].image = updatedItem.image;
+      temp[index].rating = updatedItem.rating;
+  
+      this.setState({ book: temp });
+      this.initBook();
+    } else {
+      console.error('Libro no encontrado para actualizar:', updatedItem);
+    }
+  }
 
   onRemove = (id) => {
     var temp = [...this.state.book];
