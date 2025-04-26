@@ -2,7 +2,6 @@ import React from 'react';
 import Item from './Item';
 
 function List(props) {
-    console.log(props.items);
     return(
         <div className='list'>
             {

@@ -12,15 +12,17 @@ class Item extends React.Component {
       rating:1,
       stars:[]
     };
+
+
   }
 
-  comoponentDidMount() {
+  componentDidMount() {
     this.setState({
       id: this.props.id,
       title: this.props.title,
       image: this.props.image,
       rating: this.props.rating,
-      stars: Array(parseInt(this.props.rating)).fill(0)
+      stars: Array(parseInt(this.props.rating)).fill(1)
     });
   }
 
@@ -31,7 +33,7 @@ class Item extends React.Component {
 
     this.setState({
       rating:parseInt(e.target.value),
-      stars:Array(parseInt(e.target.value)).fill(0)
+      stars:Array(parseInt(e.target.value)).fill(1)
     });
     this.props.onupdaterating({id: this.state.id, title:this.state.title, image:this.state.image, rating:rating})
   }
